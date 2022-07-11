@@ -7,8 +7,8 @@ canvas.height = innerHeight
 class Player {
     constructor() {
         this.position = {
-            x: 360,
-            y: 210
+            x: canvas.width / 2 - 40,
+            y: canvas.height / 2 - 40
         }
         this.velocity = {
             x: 0,
@@ -31,8 +31,8 @@ class Player {
 class Apple{
     constructor() {
         this.position = {
-            x: canvas.width / 2 - 20,
-            y: canvas.height / 2 - 20
+            x: 100,
+            y: 100
         }
         this.width = 20
         this.height = 20
@@ -56,7 +56,7 @@ class Score{
         const ctx = canvas.getContext('2d');
         ctx.font = '128px serif';
         ctx.fillStyle = ('black')
-        ctx.fillText(score, 10, 50);
+        ctx.fillText(score, 10, 130);
     }
 }
 const keys = {
