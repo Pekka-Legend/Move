@@ -81,18 +81,18 @@ function animate() {
     //player movement
     if (keys.left.pressed || keys.right.pressed){
         if (keys.left.pressed){
-            player.velocity.x = -4
+            player.velocity.x = -3
         }else if (keys.right.pressed){
-            player.velocity.x = 4
+            player.velocity.x = 3
         }
     }else{
         player.velocity.x = 0
     }
     if (keys.up.pressed || keys.down.pressed){
         if (keys.up.pressed){
-            player.velocity.y = -4
+            player.velocity.y = -3
         }else if (keys.down.pressed){
-            player.velocity.y = 4
+            player.velocity.y = 3
         }
     }else{
         player.velocity.y = 0
