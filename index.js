@@ -31,8 +31,8 @@ class Player {
 class Apple{
     constructor() {
         this.position = {
-            x: 100,
-            y: 100
+            x: 300,
+            y: 300
         }
         this.width = 20
         this.height = 20
@@ -46,12 +46,6 @@ class Apple{
     }
 }
 class Score{
-    constructor() {
-        this.position = {
-            x: 20,
-            y: 20
-        }
-    }
     draw(){
         const ctx = canvas.getContext('2d');
         ctx.font = '128px serif';
