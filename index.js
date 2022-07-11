@@ -104,7 +104,7 @@ function animate() {
     if (player.position.x + player.width > apple.position.x && player.position.x < apple.position.x + apple.width && player.position.y + player.height > apple.position.y && player.position.y < apple.position.y + apple.width) {
         score += 1
         apple.position.x = Math.abs(Math.floor(Math.random() * canvas.width) - 40)
-        apple.position.y = Math.abs(Math.floor(Math.random() * canvas.height) - 20)
+        apple.position.y = Math.abs(Math.floor(Math.random() * canvas.height) - 40)
     }
     //hit detection for wall
     if (player.position.x < 0){
