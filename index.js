@@ -31,8 +31,8 @@ class Player {
 class Apple{
     constructor() {
         this.position = {
-            x: 100,
-            y: 100
+            x: canvas.width / 2 - 20,
+            y: canvas.height / 2 - 20
         }
         this.width = 20
         this.height = 20
@@ -54,7 +54,7 @@ class Score{
     }
     draw(){
         const ctx = canvas.getContext('2d');
-        ctx.font = '48px serif';
+        ctx.font = '128px serif';
         ctx.fillStyle = ('black')
         ctx.fillText(score, 10, 50);
     }
@@ -87,18 +87,18 @@ function animate() {
     //player movement
     if (keys.left.pressed || keys.right.pressed){
         if (keys.left.pressed){
-            player.velocity.x = -2
+            player.velocity.x = -4
         }else if (keys.right.pressed){
-            player.velocity.x = 2
+            player.velocity.x = 4
         }
     }else{
         player.velocity.x = 0
     }
     if (keys.up.pressed || keys.down.pressed){
         if (keys.up.pressed){
-            player.velocity.y = -2
+            player.velocity.y = -4
         }else if (keys.down.pressed){
-            player.velocity.y = 2
+            player.velocity.y = 4
         }
     }else{
         player.velocity.y = 0
