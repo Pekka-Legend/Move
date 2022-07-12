@@ -123,7 +123,7 @@ function animate() {
     theScore.draw()
     timer.draw()
     //player movement
-    if (gameover == false && keys.left.pressed || keys.right.pressed){
+    if (gameover == false && keys.left.pressed || keys.right.pressed && gameover == false){
         if (keys.left.pressed){
             player.velocity.x = -2.5
         }else if (keys.right.pressed){
@@ -132,7 +132,7 @@ function animate() {
     }else{
         player.velocity.x = 0
     }
-    if (gameover == false && keys.up.pressed || keys.down.pressed){
+    if (gameover == false && keys.up.pressed || keys.down.pressed && gameover == false){
         if (keys.up.pressed){
             player.velocity.y = -2.5
         }else if (keys.down.pressed){
