@@ -56,6 +56,7 @@ class Score{
         ctx.fillStyle = ('black')
         ctx.fillText(score, 10, 130);
     }
+}
 class Timer{
     draw(){
         const ctx2 = canvas.getContext('2d');
@@ -63,7 +64,6 @@ class Timer{
         ctx2.fillStyle = ('black')
         ctx2.fillText(time, 10, 258);
     }
-}
 }
 const keys = {
     right: {
@@ -123,7 +123,7 @@ function animate() {
     theScore.draw()
     timer.draw()
     //player movement
-    if (gameover == false && keys.left.pressed || keys.right.pressed && gameover == false){
+    if (gameover == false && keys.left.pressed || keys.right.pressed){
         if (keys.left.pressed){
             player.velocity.x = -2.5
         }else if (keys.right.pressed){
@@ -132,11 +132,11 @@ function animate() {
     }else{
         player.velocity.x = 0
     }
-    if (gameover == false && keys.up.pressed || keys.down.pressed && gameover == false){
+    if (gameover == false && keys.up.pressed || keys.down.pressed){
         if (keys.up.pressed){
             player.velocity.y = -2.5
         }else if (keys.down.pressed){
-            player.velocity.y = 2
+            player.velocity.y = 2.5
         }
     }else{
         player.velocity.y = 0
@@ -148,7 +148,7 @@ function animate() {
     if (player.position.x + player.width > apple.position.x && player.position.x < apple.position.x + apple.width && player.position.y + player.height > apple.position.y && player.position.y < apple.position.y + apple.width && gameover == false) {
         score += 1
         apple.position.x = Math.abs(Math.floor(Math.random() * canvas.width) - 40)
-        apple.position.y = Math.abs(Math.floor(Math.random() * canvas.height) - 40)
+        apple.position.y = Math.abs(Math.floor(Math.random() * canvas.height) - 20)
     }
     //hit detection for wall
     if (player.position.x < 0){
