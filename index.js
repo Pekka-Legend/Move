@@ -1,3 +1,7 @@
+var gameover = false
+var time = 60
+var trueTime = time
+var restart = 0
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
 var score = 0
@@ -52,6 +56,14 @@ class Score{
         ctx.fillStyle = ('black')
         ctx.fillText(score, 10, 130);
     }
+class Timer{
+    draw(){
+        const ctx2 = canvas.getContext('2d');
+        ctx2.font = '128 serif';
+        ctx2.fillStyle = ('black')
+        ctx2.fillText(time, 10, 258);
+    }
+}
 }
 const keys = {
     right: {
@@ -71,6 +83,37 @@ const keys = {
 const player = new Player()
 const apple = new Apple()
 const theScore = new Score()
+const timer = new Timer()
+//timer
+var myfunc = setInterval(function() {
+    if (time > 0 && gameover == false){
+        time--
+        trueTime = time
+    }else if (trueTime < 1){
+        var highscore = score
+        var restart = 0
+        score = "Game Over"
+        time = ""
+        gameover = true
+    }
+}, 1000)
+var func = setInterval(function() {
+    if (gameover == true){
+        if (restart < 3){
+            restart++
+        }else{
+            score = 0
+            time = 60
+            trueTime = time
+            player.position.x = canvas.width / 2 - player.width
+            player.position.y = canvas.height / 2 - player.height
+            apple.position.x = 300
+            apple.position.y = 300
+            restart = 0
+            gameover = false
+    }
+        }
+}, 1000)
 //drawing the player
 function animate() {
     requestAnimationFrame(animate)
@@ -78,8 +121,9 @@ function animate() {
     player.update()
     apple.update()
     theScore.draw()
+    timer.draw()
     //player movement
-    if (keys.left.pressed || keys.right.pressed){
+    if (gameover == false && keys.left.pressed || keys.right.pressed && gameover == false){
         if (keys.left.pressed){
             player.velocity.x = -2.5
         }else if (keys.right.pressed){
@@ -88,7 +132,7 @@ function animate() {
     }else{
         player.velocity.x = 0
     }
-    if (keys.up.pressed || keys.down.pressed){
+    if (gameover == false && keys.up.pressed || keys.down.pressed && gameover == false){
         if (keys.up.pressed){
             player.velocity.y = -2.5
         }else if (keys.down.pressed){
@@ -101,7 +145,7 @@ function animate() {
     
     
     //move apples if touching player
-    if (player.position.x + player.width > apple.position.x && player.position.x < apple.position.x + apple.width && player.position.y + player.height > apple.position.y && player.position.y < apple.position.y + apple.width) {
+    if (player.position.x + player.width > apple.position.x && player.position.x < apple.position.x + apple.width && player.position.y + player.height > apple.position.y && player.position.y < apple.position.y + apple.width && gameover == false) {
         score += 1
         apple.position.x = Math.abs(Math.floor(Math.random() * canvas.width) - 40)
         apple.position.y = Math.abs(Math.floor(Math.random() * canvas.height) - 40)
